@@ -1,0 +1,43 @@
+package com.shopsense.controller;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.shopsense.service.WithdrawalService;
+import com.shopsense.dto.WithdrawalAdmin;
+import com.shopsense.entity.Withdrawal;
+
+@CrossOrigin(origins = "http://localhost:4200")
+@RestController
+public class WithdrawalController {
+
+	@Autowired
+	WithdrawalService withdrawalService;
+
+	@PostMapping(value = "/seller/withdraw")
+	public Withdrawal requestWithdraw(@RequestBody Withdrawal a) {
+		return withdrawalService.requestWithdraw(a);
+	}
+
+	@GetMapping(value = "/seller/withdrawals/{sellerId}")
+	public List<Withdrawal> getWithdrawals(@PathVariable int sellerId) {
+		return withdrawalService.getWithdrawals(sellerId);
+	}
+
+	@PostMapping(value = "/admin/withdraw")
+	public boolean updateWithdraw(@RequestBody WithdrawalAdmin a) {
+		return withdrawalService.updateWithdraw(a);
+	}
+
+	@GetMapping(value = "/admin/withdrawals")
+	public List<WithdrawalAdmin> getAllWithdrawals() {
+		return withdrawalService.getAllWithdrawals();
+	}
+}
