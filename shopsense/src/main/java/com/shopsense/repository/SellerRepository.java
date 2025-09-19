@@ -1,5 +1,6 @@
 package com.shopsense.repository;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Optional;
 
@@ -19,7 +20,13 @@ public interface SellerRepository extends JpaRepository<Seller, Integer> {
 	Optional<Seller> findByEmailAndStatus(String email, String status);
 	
 	boolean existsByEmail(String email);
-	
+	@Query("SELECT COUNT(s) FROM Seller s WHERE s.status = 'Active'")
+	int countActiveSellers();
+
+	@Query("SELECT new java.util.HashMap(map('sellerId', s.id, 'storeName', s.storeName, 'totalOrders', COUNT(DISTINCT od.orderId), 'totalRevenue', COALESCE(SUM(od.subTotal), 0))) " +
+			"FROM Seller s LEFT JOIN OrderDetails od ON s.id = od.sellerId GROUP BY s.id, s.storeName")
+	List<HashMap<String, Object>> getSellerReport();
+
 	List<Seller> findAllByStatus(String status);
 	
 	@Modifying
