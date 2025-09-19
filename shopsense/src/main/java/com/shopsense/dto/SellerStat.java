@@ -16,4 +16,8 @@ public class SellerStat {
 	private int soldItems;
 	private double revenue;
 	private double profit;
+	private int totalProducts;
+	private int pendingOrders;
+	private long totalOrders;
+	private double totalRevenue;
 }
