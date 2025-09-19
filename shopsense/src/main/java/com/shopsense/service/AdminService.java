@@ -24,7 +24,7 @@ import com.shopsense.repository.OrderRepository;
 import com.shopsense.repository.ProductRepository;
 import com.shopsense.repository.RevenueProfitRepository;
 import com.shopsense.repository.SellerRepository;
-import com.shopsense.service.EmailService;
+//import com.shopsense.service.EmailService;
 
 @Service
 public class AdminService implements UserDetailsService {
@@ -50,8 +50,8 @@ public class AdminService implements UserDetailsService {
 	@Autowired
 	private RevenueProfitRepository revenueProfitRepository;
 	
-	@Autowired
-	private EmailService emailService;
+//	@Autowired
+//	private EmailService emailService;
 
 	@Override
 	public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {

@@ -38,8 +38,8 @@ public class SellerService implements UserDetailsService {
 	@Autowired
 	private RevenueProfitRepository revenueProfitRepository;
 	
-	@Autowired
-	private EmailService emailService;
+//	@Autowired
+//	private EmailService emailService;
 
 	@Override
 	public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
@@ -146,9 +146,9 @@ public class SellerService implements UserDetailsService {
 			}
 
 			// Send status update email
-			emailService.sendContentEmail("humahfuj@gmail.com", "Order Status Changed",
-				"<h1>Update of your order status</h1>" +
-				"<h2>Your order #" + orderDetails.getOrderId() + " is now " + orderDetails.getStatus() + "</h2>");
+//			emailService.sendContentEmail("humahfuj@gmail.com", "Order Status Changed",
+//				"<h1>Update of your order status</h1>" +
+//				"<h2>Your order #" + orderDetails.getOrderId() + " is now " + orderDetails.getStatus() + "</h2>");
 
 			return true;
 		} catch (Exception e) {

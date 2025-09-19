@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.shopsense.service.CustomerService;
-import com.shopsense.service.ProductService;
+//import com.shopsense.service.ProductService;
 import com.shopsense.dto.AuthRequest;
 import com.shopsense.dto.AuthResponse;
 import com.shopsense.entity.CartItem;
@@ -31,8 +31,8 @@ public class CustomerController {
 	@Autowired
 	CustomerService customerService;
 	
-	@Autowired
-	ProductService productService;
+//	@Autowired
+//	ProductService productService;
 	
 	@Autowired
 	AuthService authService;
@@ -52,15 +52,15 @@ public class CustomerController {
 		return customerService.getCustomer(customerId);
 	}
 
-	@GetMapping(value = "/product/{productId}")
-	public Product getProduct(@PathVariable("productId") int productId) {
-		return productService.getProduct(productId);
-	}
+//	@GetMapping(value = "/product/{productId}")
+//	public Product getProduct(@PathVariable("productId") int productId) {
+//		return productService.getProduct(productId);
+//	}
 
-	@GetMapping(value = "/products")
-	public List<Product> getProducts() {
-		return productService.getAllProducts();
-	}
+//	@GetMapping(value = "/products")
+//	public List<Product> getProducts() {
+//		return productService.getAllProducts();
+//	}
 
 	@PostMapping(value = "/customer/cart")
 	public CartItem addToCart(@RequestBody CartItem a) {
@@ -107,10 +107,10 @@ public class CustomerController {
 		return customerService.isProductPurchased(customerId, productId);
 	}
 
-	@GetMapping(value = "/search")
-	public List<Product> searchProducts(@RequestParam String q) {
-		return productService.searchProducts(q);
-	}
+//	@GetMapping(value = "/search")
+//	public List<Product> searchProducts(@RequestParam String q) {
+//		return productService.searchProducts(q);
+//	}
 
 	@PostMapping(value = "/customer/send-code")
 	public boolean sendVerificationCode(@RequestBody Customer a) {

@@ -45,8 +45,8 @@ public class CustomerService implements UserDetailsService {
 	@Autowired
 	private VerificationCodeRepository verificationCodeRepository;
 	
-	@Autowired
-	private EmailService emailService;
+//	@Autowired
+//	private EmailService emailService;
 
 	@Override
 	public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
@@ -161,8 +161,8 @@ public class CustomerService implements UserDetailsService {
 			verificationCodeRepository.save(verificationCode);
 
 			// Send email
-			emailService.sendContentEmail("humahfuj@gmail.com", "Verification Code",
-				"<h2>Verification code is : " + String.valueOf(randomCode) + "</h2>");
+//			emailService.sendContentEmail("humahfuj@gmail.com", "Verification Code",
+//				"<h2>Verification code is : " + String.valueOf(randomCode) + "</h2>");
 
 			return true;
 		} catch (Exception e) {
@@ -176,8 +176,8 @@ public class CustomerService implements UserDetailsService {
 		try {
 			if (verificationCodeRepository.existsByUserIdAndCode(userId, code)) {
 				// Send confirmation email
-				emailService.sendContentEmail("humahfuj@gmail.com", "Email Verified",
-					"<h2>Email verification is complete</h2>");
+//				emailService.sendContentEmail("humahfuj@gmail.com", "Email Verified",
+//					"<h2>Email verification is complete</h2>");
 
 				// Delete verification code
 				verificationCodeRepository.deleteByUserId(userId);
