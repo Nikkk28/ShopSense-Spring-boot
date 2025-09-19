@@ -20,15 +20,21 @@ public class CategoryService {
 
 	public Category getCategory(int categoryId) {
 		return categoryRepository.findById(categoryId)
-			.orElseThrow(() -> new RuntimeException("Category not found"));
+				.orElseThrow(() -> new RuntimeException("Category not found"));
 	}
 
 	public Category createCategory(Category category) {
 		return categoryRepository.save(category);
 	}
 
-	public Category updateCategory(Category category) {
-		return categoryRepository.save(category);
+	public boolean updateCategory(Category category) {
+		try {
+			categoryRepository.save(category);
+			return true;
+		} catch (Exception e) {
+			System.out.println(e);
+			return false;
+		}
 	}
 
 	public boolean deleteCategory(int categoryId) {

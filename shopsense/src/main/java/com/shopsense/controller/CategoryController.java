@@ -34,7 +34,12 @@ public class CategoryController {
 
 	@PutMapping(value = "/category")
 	public boolean update(@RequestBody Category c) {
-		return categoryService.updateCategory(c);
+		try {
+			categoryService.updateCategory(c);
+			return true;
+		} catch (Exception e) {
+			return false;
+		}
 	}
 
 	@DeleteMapping(value = "/category")

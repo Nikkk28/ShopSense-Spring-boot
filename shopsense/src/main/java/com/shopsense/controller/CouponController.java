@@ -24,7 +24,7 @@ public class CouponController {
 
 	@GetMapping(value = "/coupon/check")
 	public Coupon checkCoupon(@RequestParam String code) {
-		return couponService.checkCoupon(code);
+		return couponService.getValidCouponByCode(code);
 	}
 
 	@GetMapping(value = "/coupon/all")
@@ -39,7 +39,12 @@ public class CouponController {
 
 	@PutMapping(value = "/coupon")
 	public boolean updateCoupon(@RequestBody Coupon c) {
-		return couponService.updateCoupon(c);
+		try {
+			couponService.updateCoupon(c);
+			return true;
+		} catch (Exception e) {
+			return false;
+		}
 	}
 
 	@DeleteMapping(value = "/coupon")
